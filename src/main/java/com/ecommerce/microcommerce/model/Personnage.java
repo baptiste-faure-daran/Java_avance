@@ -2,42 +2,42 @@ package com.ecommerce.microcommerce.model;
 
 public class Personnage {
 
-    public int Id;
-    public String Name;
-    public String Classe;
+    public int id;
+    public String name;
+    public String classe;
 
     public Personnage(int id, String name, String classe) {
-        Id = id;
-        Name = name;
-        Classe = classe;
+        this.id = id;
+        this.name = name;
+        this.classe = classe;
 
     }
 
     public String ToString() {
-        return "id :" + Id + ", classe :" + Classe + ", name :" + Name;
+        return "id :" + id + ", classe :" + classe + ", name :" + name;
     }
 
     public int getId() {
-        return Id;
+        return id;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public String getClasse() {
-        return Classe;
+        return classe;
     }
 
     public void setId(int id) {
-        Id = id;
+        this.id = id;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public void setClasse(String classe) {
-        Classe = classe;
+        this.classe = classe;
     }
 }

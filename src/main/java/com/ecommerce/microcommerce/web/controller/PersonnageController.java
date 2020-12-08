@@ -11,7 +11,6 @@ import java.util.List;
 @RestController
 public class PersonnageController {
 
-
     @Autowired
     private PersonnageDao IPersonnageDao;
 
@@ -19,7 +18,7 @@ public class PersonnageController {
     @RequestMapping(value="/personnages", method= RequestMethod.GET)
     public List<Personnage> ListePersonnages () {
 
-        return IPersonnageDao.FindAll();
+        return IPersonnageDao.findAll();
 
     }
 
@@ -27,9 +26,20 @@ public class PersonnageController {
     @GetMapping(value="/personnages/{id}")
     public Personnage AfficherPersonnageParId(@PathVariable int id) {
 
-
-        return IPersonnageDao.PersonnageFindById(id);
+        return IPersonnageDao.findById(id);
 
     };
+
+    @PostMapping(value = "/personnages")
+    public void AjouterPersonnage(@RequestBody Personnage personnage) {
+        IPersonnageDao.save(personnage);
+    }
+
+    //Supprimer un personnage par son Id
+    @RequestMapping(value = "/personnages/{id}/supprimer", method = RequestMethod.DELETE)
+
+    public void SupprimerPersonnageParId(@PathVariable int id) {
+        IPersonnageDao.delete(id);
+    }
 
 }

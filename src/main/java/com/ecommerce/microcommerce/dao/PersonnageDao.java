@@ -6,11 +6,13 @@ import java.util.List;
 
 public interface PersonnageDao {
 
-     List<Personnage>FindAll();
+     List<Personnage> findAll();
 
-     Personnage PersonnageFindById(int id);
+     Personnage findById(int id);
 
-     Personnage PersonnageSave(Personnage personnage);
+     void save(Personnage personnage);
+
+     void delete(int id);
 }
 
 

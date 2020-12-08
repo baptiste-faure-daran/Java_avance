@@ -17,12 +17,12 @@ public class PersonnageDaoImpl implements PersonnageDao{
 
 
     @Override
-    public List<Personnage>FindAll() {
+    public List<Personnage> findAll() {
        return ListeTousPersonnages;
    }
 
    @Override
-    public Personnage PersonnageFindById(int id) {
+    public Personnage findById(int id) {
         for (Personnage personnage : ListeTousPersonnages){
             if (personnage.getId() == id) {
                 return personnage;
@@ -32,11 +32,17 @@ public class PersonnageDaoImpl implements PersonnageDao{
    }
 
    @Override
-    public Personnage PersonnageSave(Personnage personnage) {
+   public void save(Personnage personnage) {
         ListeTousPersonnages.add(personnage);
-       return personnage;
    }
 
 
+    public void delete(int id) {
+        Personnage removePersonnage = findById(id);
+        if (removePersonnage != null) {
+            ListeTousPersonnages.remove(removePersonnage);
+        }
+
+   }
 }
 
