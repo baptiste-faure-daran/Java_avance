@@ -15,20 +15,22 @@ public class PersonnageController {
     private PersonnageDao IPersonnageDao;
 
     //Récupérer la liste des personnages
-    @RequestMapping(value="/personnages", method= RequestMethod.GET)
-    public List<Personnage> ListePersonnages () {
+    @RequestMapping(value = "/personnages", method = RequestMethod.GET)
+    public List<Personnage> ListePersonnages() {
 
         return IPersonnageDao.findAll();
 
     }
 
     //Récupérer un personnage par son Id
-    @GetMapping(value="/personnages/{id}")
+    @GetMapping(value = "/personnages/{id}")
     public Personnage AfficherPersonnageParId(@PathVariable int id) {
 
         return IPersonnageDao.findById(id);
 
-    };
+    }
+
+    ;
 
     @PostMapping(value = "/personnages")
     public void AjouterPersonnage(@RequestBody Personnage personnage) {
