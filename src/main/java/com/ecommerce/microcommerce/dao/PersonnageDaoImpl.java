@@ -20,6 +20,7 @@ public class PersonnageDaoImpl implements PersonnageDao {
         ListeTousPersonnages.add(new Personnage(3, "Denis", "Moine"));
     }
 
+    private int counter = 4;
 
     @Override
     public List<Personnage> findAll() {
@@ -28,17 +29,39 @@ public class PersonnageDaoImpl implements PersonnageDao {
 
     @Override
     public Personnage findById(int id) {
+
+        Personnage personnageRet = null;
+
+
         for (Personnage personnage : ListeTousPersonnages) {
             if (personnage.getId() == id) {
-                return personnage;
+                personnageRet = personnage;
             }
         }
-        return null;
+        return personnageRet;
     }
 
     @Override
     public Personnage save(Personnage personnage) {
-        // Try Catch
+        Personnage newPersonnage = new Personnage(counter++, personnage.getName(), personnage.getClasse());
+        ListeTousPersonnages.add(newPersonnage);
+        return newPersonnage;
+    }
+
+    @Override
+    public Personnage update(int id, Personnage input) {
+        Personnage putPersonnage = findById(id);
+
+        if (putPersonnage != null) {
+            putPersonnage.setName(input.getName());
+            putPersonnage.setClasse(input.getClasse());
+        }
+        return putPersonnage;
+    }
+
+    /*
+
+    public Personnage save1(Personnage personnage) {
         Personnage personnageToUpdate = findById(personnage.getId());
         if (personnageToUpdate != null) {
             ListeTousPersonnages.set(ListeTousPersonnages.indexOf(personnageToUpdate), personnage);
@@ -47,12 +70,18 @@ public class PersonnageDaoImpl implements PersonnageDao {
         return personnage;
     }
 
+     */
+
     @Override
-    public void delete(int id) {
+    public boolean delete(int id) {
+        Boolean isDeleted = false;
         Personnage removePersonnage = findById(id);
+
         if (removePersonnage != null) {
             ListeTousPersonnages.remove(removePersonnage);
+            isDeleted = true;
         }
+        return removePersonnage != null;
     }
 
 }
