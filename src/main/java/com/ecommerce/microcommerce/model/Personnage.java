@@ -1,8 +1,16 @@
 package com.ecommerce.microcommerce.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Personnage {
 
+    @Id
+    @GeneratedValue
     public int id;
+
     public String name;
     public String classe;
 
@@ -10,6 +18,10 @@ public class Personnage {
         this.id = id;
         this.name = name;
         this.classe = classe;
+
+    }
+
+    public Personnage() {
 
     }
 
