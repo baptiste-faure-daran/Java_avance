@@ -2,9 +2,15 @@ package com.ecommerce.microcommerce.model;
 
 public class Personnage {
 
+
     public int id;
     public String name;
     public String classe;
+
+
+    public Personnage() {
+
+    }
 
     public Personnage(int id, String name, String classe) {
         this.id = id;
